@@ -1,15 +1,15 @@
-from typing import Union, Optional
-from pydantic import BaseModel
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
-class ProductSaleInfo(BaseModel):
-    id: Union[int]
-    name: Optional[str]
-    price: Union[int]
-    sale_price: Union[int]
-    rating: Union[float]
-    reviews: Union[int]
+class Base(DeclarativeBase):
+    ...
 
-    class Config:
-        from_attributes = True
 
+class Product(Base):
+    __tablename__ = "products"
+    id: Mapped[int] = mapped_column(primary_key=True, index=True)
+    name: Mapped[int] = mapped_column(index=True)
+    price: Mapped[int]
+    sale_price: Mapped[int]
+    rating: Mapped[float]
+    reviews: Mapped[int]
