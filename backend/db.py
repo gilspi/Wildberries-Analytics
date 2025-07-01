@@ -6,7 +6,7 @@ from models import Base
 
 
 engine = create_engine(DATABASE_URL, echo=True, connect_args={"check_same_thread": False})
-Session = sessionmaker(autoflush=False, bind=engine)
+session_factory = sessionmaker(autoflush=False, bind=engine)
 
 
 class Database:
