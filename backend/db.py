@@ -1,11 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from config import DATABASE_URL
 from models import Base
+from schemas import db_settings
 
 
-engine = create_engine(DATABASE_URL, echo=True, connect_args={"check_same_thread": False})
+engine = create_engine(db_settings.db_url, echo=True, connect_args={"check_same_thread": False})
 session_factory = sessionmaker(autoflush=False, bind=engine)
 
 
